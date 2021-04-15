@@ -1,0 +1,48 @@
+DB1
+    - 4 tables
+        - people table
+            - user id
+            - username
+            - user information
+        - chat table
+            - chat id 
+            - user 1
+            - user 2
+            - messages
+        - messages table
+            - chat id
+            - message
+            - time of message
+            - status of message
+        - suspension table
+            - user id
+            - suspension status
+            - time on suspension
+                - null if no suspension
+                - time remaining or time that suspension ends
+                (if we do time remaining, we can avoid null and just have a difference 
+                between time of start and time of end.  0 would equal no suspension)
+                - UPDATE:
+                    - We need to know past suspensions so maybe add a start date and an end date
+
+
+
+Calculating 6 month difference given two dates:
+    ((date1.year - date2.year) * 12) + date1.Month - date2.month
+    Use case:
+        Over 6 months: 02-22-2012 to 06-23-2013
+        ((2013 - 2012) * 12) + 6 - 2 = 16
+        Under 6 months: 03-12-2014 to 05-23-2014
+        ((0)) + 5 - 3 = 2
+        6 months exactly: 04-12-2015 to 10-22-2015
+        ((0)) + 10 - 4 = 6
+
+        Then we can use an if statement checking if the days in the later month is greater than the days in the lesser month
+
+Calculating if date falls in between two given dates:
+    if year falls in between years
+        if month falls  between months
+            if date falls  in between dates
+
+
+MIGHT BE WORTH ADDING GLOBAL VARIABLES FOR IDs 
